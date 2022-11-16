@@ -28,9 +28,9 @@ namespace AsyncInnTake2_401_Lab.Data
       modelBuilder.Entity<Hotel>().HasData(TheGreenDay);
       modelBuilder.Entity<Hotel>().HasData(TheBroadway);
 
-      modelBuilder.Entity<Room>().HasData(new Room { Id = 101, HotelId = TheNemo, IsPetFriendly = true, Layout = 2, Nickname = "The Butt", Price = 475, RoomNumber = 41, RoomAmenities= One});
-      modelBuilder.Entity<Room>().HasData(new Room { Id = 201, HotelId = TheGreenDay, IsPetFriendly = false, Layout = 0, Nickname = "The American Idiot", Price = 255, RoomNumber = 20, RoomAmenities=Two });
-      modelBuilder.Entity<Room>().HasData(new Room { Id = 301, HotelId = TheBroadway, IsPetFriendly = true, Layout = 1, Nickname = "The Globe", Price = 670, RoomNumber = 76, RoomAmenities=Three });
+      modelBuilder.Entity<Room>().HasData(new Room { Id = 101, AssociatedHotel = TheNemo, IsPetFriendly = true, Layout = 2, Nickname = "The Butt", Price = 475, RoomNumber = 41, RoomAmenities= One});
+      modelBuilder.Entity<Room>().HasData(new Room { Id = 201, AssociatedHotel = TheGreenDay, IsPetFriendly = false, Layout = 0, Nickname = "The American Idiot", Price = 255, RoomNumber = 20, RoomAmenities=Two });
+      modelBuilder.Entity<Room>().HasData(new Room { Id = 301, AssociatedHotel = TheBroadway, IsPetFriendly = true, Layout = 1, Nickname = "The Globe", Price = 670, RoomNumber = 76, RoomAmenities=Three });
 
       modelBuilder.Entity<Amenity>().HasData(One);
       modelBuilder.Entity<Amenity>().HasData(Two);
