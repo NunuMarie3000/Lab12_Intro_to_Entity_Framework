@@ -12,7 +12,7 @@ namespace AsyncInnTake2_401_Lab.Models
     public int RoomNumber { get; set; }
     [DisplayName("Is Pet Friendly")]
     public bool IsPetFriendly { get; set; }
-    [DisplayName("Associated Hotel Id")]
+    [DisplayName("Associated Hotel")]
     public Hotel AssociatedHotel { get; set; }
     public int Layout { get; set; }
   }
