@@ -7,16 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInnTake2_401_Lab.Data;
 using AsyncInnTake2_401_Lab.Models;
+using AsyncInnTake2_401_Lab.Models.Interfaces;
 
 namespace AsyncInnTake2_401_Lab.Controllers
 {
     public class HotelsController : Controller
     {
         private readonly AsyncInnDbContext _context;
+        private IHotel _hotel;
 
         public HotelsController(AsyncInnDbContext context)
         {
             _context = context;
+        }
+
+        public HotelsController(IHotel h)
+        {
+         _hotel = h;
         }
 
         // GET: Hotels
@@ -58,8 +65,9 @@ namespace AsyncInnTake2_401_Lab.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hotel);
-                await _context.SaveChangesAsync();
+                //_context.Add(hotel);
+                //await _context.SaveChangesAsync();
+                await _hotel.Create(hotel);
                 return RedirectToAction(nameof(Index));
             }
             return View(hotel);
