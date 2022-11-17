@@ -2,19 +2,27 @@
 {
     public interface IRoom
     {
-     // CREATE
-     Task<Room> Create( Room room );
+    // CREATE
+    Task<Room> Create( Room room );
 
-     //UPDATE
-     Task<Room> UpdateRoom( int? id );
+    //UPDATE
+    Task<Room> UpdateRoom( Room room );
 
-     //DELETE
-     Task<Room> Delete( int? id );
+    //DELETE
+    Task<Room> Delete( Room room );
 
-     // READ ONE
-     Task<Room> GetRoom( int id );
+    // READ ONE
+    Task<Room> GetRoom( int? id );
 
-     // READ ALL
-     Task<List<Room>> GetRooms();
- }
+    // READ ALL
+    Task<List<Room>> GetRooms();
+
+    // FIND
+    Task<Room> Find( int? id );
+
+    // Save
+    Task<Room> SaveChanges();
+
+    bool Exists( int id );
+  }
 }

@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using AsyncInnTake2_401_Lab;
 using AsyncInnTake2_401_Lab.Data;
+using AsyncInnTake2_401_Lab.Models.Interfaces;
+using AsyncInnTake2_401_Lab.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IHotel, HotelService>();
+builder.Services.AddTransient<IAmenity, AmenityService>();
+builder.Services.AddTransient<IRoom, RoomService>();
 
 //ADDED HERE
 builder.Services.AddDbContext<AsyncInnDbContext>(options =>

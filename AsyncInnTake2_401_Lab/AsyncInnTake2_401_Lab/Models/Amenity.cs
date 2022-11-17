@@ -16,5 +16,6 @@ namespace AsyncInnTake2_401_Lab.Models
     [DisplayName("Pet Friendly")]
     public bool PetFriendly { get; set; }
     //public Room RoomId { get; set; }
+    public RoomAmenities Room { get; set; }
   }
 }
