@@ -16,10 +16,10 @@ namespace AsyncInnTake2_401_Lab.Controllers
         private readonly AsyncInnDbContext _context;
         private IHotel _hotel;
 
-        public HotelsController(AsyncInnDbContext context)
-        {
-            _context = context;
-        }
+        //public HotelsController(AsyncInnDbContext context)
+        //{
+        //    _context = context;
+        //}
 
         public HotelsController(IHotel h)
         {

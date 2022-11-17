@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInnTake2_401_Lab.Data;
 using AsyncInnTake2_401_Lab.Models;
+using AsyncInnTake2_401_Lab.Models.Interfaces;
 
 namespace AsyncInnTake2_401_Lab.Controllers
 {
     public class RoomsController : Controller
     {
         private readonly AsyncInnDbContext _context;
+        private IRoom _room;
 
-        public RoomsController(AsyncInnDbContext context)
+        //public RoomsController( AsyncInnDbContext context )
+        //{
+        // _context = context;
+        //}
+        public RoomsController( IRoom r )
         {
-            _context = context;
+         _room = r;
         }
 
         // GET: Rooms
@@ -58,8 +64,9 @@ namespace AsyncInnTake2_401_Lab.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(room);
-                await _context.SaveChangesAsync();
+                //_context.Add(room);
+                //await _context.SaveChangesAsync();
+                _room.Create(room);
                 return RedirectToAction(nameof(Index));
             }
             return View(room);

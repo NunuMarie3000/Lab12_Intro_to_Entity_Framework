@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInnTake2_401_Lab.Data;
 using AsyncInnTake2_401_Lab.Models;
+using AsyncInnTake2_401_Lab.Models.Interfaces;
 
 namespace AsyncInnTake2_401_Lab.Controllers
 {
     public class AmenitiesController : Controller
     {
         private readonly AsyncInnDbContext _context;
+        private IAmenity _amenity;
 
-        public AmenitiesController(AsyncInnDbContext context)
+        //public AmenitiesController(AsyncInnDbContext context)
+        //{
+        //    _context = context;
+        //}
+        public AmenitiesController( IAmenity a )
         {
-            _context = context;
+         _amenity= a;
         }
 
         // GET: Amenities
@@ -58,8 +64,9 @@ namespace AsyncInnTake2_401_Lab.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(amenity);
-                await _context.SaveChangesAsync();
+                //_context.Add(amenity);
+                //await _context.SaveChangesAsync();
+                await _amenity.Create(amenity);
                 return RedirectToAction(nameof(Index));
             }
             return View(amenity);
