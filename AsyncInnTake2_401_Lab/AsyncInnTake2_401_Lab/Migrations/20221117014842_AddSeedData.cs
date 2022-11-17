@@ -13,6 +13,16 @@ namespace AsyncInnTake2401Lab.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
+                table: "Amenities",
+                columns: new[] { "Id", "AirConditioning", "Coffee", "Fridge", "MiniBar", "OceanView", "PetFriendly", "Safe" },
+                values: new object[,]
+                {
+                    { 51, true, false, true, false, true, true, false },
+                    { 52, true, true, true, false, false, false, false },
+                    { 53, true, false, true, true, false, true, true }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Hotels",
                 columns: new[] { "Id", "Address", "City", "Name", "NumberOfRooms", "PhoneNumber", "State" },
                 values: new object[,]
@@ -24,22 +34,12 @@ namespace AsyncInnTake2401Lab.Migrations
 
             migrationBuilder.InsertData(
                 table: "Rooms",
-                columns: new[] { "Id", "HotelId", "IsPetFriendly", "Layout", "Nickname", "Price", "RoomNumber" },
+                columns: new[] { "Id", "AssociatedHotel", "IsPetFriendly", "Layout", "Nickname", "Price", "RoomAmenities", "RoomNumber" },
                 values: new object[,]
                 {
-                    { 101, 100, true, 2, "The Butt", 475, 41 },
-                    { 201, 200, false, 0, "The American Idiot", 255, 20 },
-                    { 301, 300, true, 1, "The Globe", 670, 76 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Amenities",
-                columns: new[] { "Id", "AirConditioning", "Coffee", "Fridge", "MiniBar", "OceanView", "PetFriendly", "RoomId", "Safe" },
-                values: new object[,]
-                {
-                    { 51, true, false, true, false, true, true, 101, false },
-                    { 52, true, true, true, false, false, false, 201, false },
-                    { 53, true, false, true, true, false, true, 301, true }
+                    { 101, "The Nemo", true, 2, "The Butt", 475, 51, 41 },
+                    { 201, "The Green Day", false, 0, "The American Idiot", 255, 52, 20 },
+                    { 301, "The Broadway", true, 1, "The Globe", 670, 53, 76 }
                 });
         }
 

@@ -54,7 +54,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nickname,Price,RoomNumber,IsPetFriendly,HotelId,Layout")] Room room)
+        public async Task<IActionResult> Create([Bind("Id,Nickname,RoomAmenities,Price,RoomNumber,IsPetFriendly,AssociatedHotel,Layout")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nickname,Price,RoomNumber,IsPetFriendly,HotelId,Layout")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nickname,RoomAmenities,Price,RoomNumber,IsPetFriendly,AssociatedHotel,Layout")] Room room)
         {
             if (id != room.Id)
             {

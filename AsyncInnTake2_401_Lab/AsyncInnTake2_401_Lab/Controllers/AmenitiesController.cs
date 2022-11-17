@@ -54,7 +54,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AirConditioning,Coffee,OceanView,MiniBar,Fridge,Safe,PetFriendly,RoomId")] Amenity amenity)
+        public async Task<IActionResult> Create([Bind("Id,AirConditioning,Coffee,OceanView,MiniBar,Fridge,Safe,PetFriendly")] Amenity amenity)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AirConditioning,Coffee,OceanView,MiniBar,Fridge,Safe,PetFriendly,RoomId")] Amenity amenity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AirConditioning,Coffee,OceanView,MiniBar,Fridge,Safe,PetFriendly")] Amenity amenity)
         {
             if (id != amenity.Id)
             {

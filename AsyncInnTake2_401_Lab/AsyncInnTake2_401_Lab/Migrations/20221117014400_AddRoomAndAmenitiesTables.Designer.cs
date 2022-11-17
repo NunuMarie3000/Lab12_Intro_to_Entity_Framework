@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInnTake2401Lab.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    [Migration("20221116154555_UpdateModel")]
-    partial class UpdateModel
+    [Migration("20221117014400_AddRoomAndAmenitiesTables")]
+    partial class AddRoomAndAmenitiesTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,15 +50,10 @@ namespace AsyncInnTake2401Lab.Migrations
                     b.Property<bool>("PetFriendly")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Safe")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
 
                     b.ToTable("Amenities");
                 });
@@ -107,8 +102,9 @@ namespace AsyncInnTake2401Lab.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HotelId")
-                        .HasColumnType("int");
+                    b.Property<string>("AssociatedHotel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsPetFriendly")
                         .HasColumnType("bit");
@@ -123,26 +119,15 @@ namespace AsyncInnTake2401Lab.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
+                    b.Property<int>("RoomAmenities")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("AsyncInnTake2_401_Lab.Models.Amenity", b =>
-                {
-                    b.HasOne("AsyncInnTake2_401_Lab.Models.Room", null)
-                        .WithMany("RoomAmenities")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AsyncInnTake2_401_Lab.Models.Room", b =>
-                {
-                    b.Navigation("RoomAmenities");
                 });
 #pragma warning restore 612, 618
         }
