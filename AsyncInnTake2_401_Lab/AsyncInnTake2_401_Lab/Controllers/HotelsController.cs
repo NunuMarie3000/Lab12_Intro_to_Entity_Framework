@@ -27,7 +27,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
         }
 
         // GET: Hotels/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null || _hotel.GetHotels() == null)
             {
@@ -72,12 +72,12 @@ namespace AsyncInnTake2_401_Lab.Controllers
                 return NotFound();
             }
 
-            var hotel = await _hotel.Find(id);
+            var hotel =  await _hotel.Find(id);
             if (hotel == null)
             {
                 return NotFound();
             }
-            return View(hotel);
+            return Ok(View(hotel));
         }
 
         // POST: Hotels/Edit/5
@@ -115,14 +115,14 @@ namespace AsyncInnTake2_401_Lab.Controllers
         }
 
         // GET: Hotels/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null || _hotel.GetHotels() == null)
             {
                 return NotFound();
             }
 
-      var hotel = await _hotel.GetHotel(id);
+            var hotel = await _hotel.GetHotel(id);
             if (hotel == null)
             {
                 return NotFound();
