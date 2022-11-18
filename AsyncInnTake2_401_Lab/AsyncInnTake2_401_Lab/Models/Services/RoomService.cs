@@ -51,5 +51,30 @@ namespace AsyncInnTake2_401_Lab.Models.Services
     {
       return _asyncinnDbContext.Rooms.Any(e => e.Id == id);
     }
+
+    public Task<Room> AddAmenityToRoom( int roomId, int amenityId )
+    {
+      var chosenOne = _asyncinnDbContext.Rooms.Where(room => room.Id == roomId);
+      // what are we doing here? add the entire amenity class to a room, why do we have an amenityId though?
+      // if we're adding the amenity...you know, perhaps we're assuming it's already created and we're simply adding it to the context
+      // do we also need to join the amenity to the room then? using the room's RoomAmenities class?
+      foreach(var item in chosenOne)
+      {
+        RoomAmenities newroomamenities = new RoomAmenities { RoomId=roomId, AmenitiesId=amenityId};
+
+      }
+
+      return null;
+    }
+
+    public Task<Room> RemoveAmenityFromRoom( int roomId, int amenityId )
+    {
+      // what is the best way to do this? we wanna be able to remove amenity from the room
+      // or do we wanna remove the entire amenity object?
+      // i'll just remove the entire object, that's easiest...
+      var chosenOne = _asyncinnDbContext.Rooms.Where(room => room.Id == roomId && room.RoomAmenities.AmenitiesId== amenityId);
+      _asyncinnDbContext.Remove(chosenOne);
+      return null;
+    }
   }
 }

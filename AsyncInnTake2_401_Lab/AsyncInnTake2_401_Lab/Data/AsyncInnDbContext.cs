@@ -31,6 +31,8 @@ namespace AsyncInnTake2_401_Lab.Data
       Room TheGlobe = new Room { Id = 301, AssociatedHotel = TheBroadway.Name, IsPetFriendly = true, Layout = 1, Nickname = "The Globe", Price = 670, RoomNumber = 76 };
 
       modelBuilder.Entity<RoomAmenities>().HasData(new RoomAmenities { Id=750, AmenitiesId = One.Id, RoomId = TheButt.Id });
+      modelBuilder.Entity<RoomAmenities>().HasData(new RoomAmenities { Id = 751, AmenitiesId = Two.Id, RoomId = TheAmericanIdiot.Id });
+      modelBuilder.Entity<RoomAmenities>().HasData(new RoomAmenities { Id = 752, AmenitiesId = Three.Id, RoomId = TheGlobe.Id });
 
       modelBuilder.Entity<Amenity>().HasData(One);
       modelBuilder.Entity<Amenity>().HasData(Two);
@@ -48,6 +50,7 @@ namespace AsyncInnTake2_401_Lab.Data
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<Amenity> Amenities { get; set; }
+    public DbSet<RoomAmenities> RoomAmenitieses { get; set; }
   }
 }
 

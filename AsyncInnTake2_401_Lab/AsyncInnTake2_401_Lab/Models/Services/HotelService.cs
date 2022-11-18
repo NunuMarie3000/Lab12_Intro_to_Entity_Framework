@@ -22,12 +22,12 @@ namespace AsyncInnTake2_401_Lab.Models.Services
         public async Task<Hotel> UpdateHotel(Hotel hotel)
         {
           _asyncinnDbContext.Update(hotel);
-          SaveChanges();
+          await SaveChanges();
           return hotel;  
         }
         public async Task<Hotel> Find(int? id)
         {
-          return await _asyncinnDbContext.Hotels.FindAsync(id);
+          return await _asyncinnDbContext.Hotels.Where(h => h.Id ==id).FirstOrDefaultAsync();
         }
        public async Task<Hotel> Delete(Hotel hotel)
        {

@@ -3,6 +3,7 @@ using AsyncInnTake2_401_Lab.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncInnTake2401Lab.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117225631_ForgotToAddDbSetForRoomAmenities")]
+    partial class ForgotToAddDbSetForRoomAmenities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,18 +256,6 @@ namespace AsyncInnTake2401Lab.Migrations
                             Id = 750,
                             AmenitiesId = 51,
                             RoomId = 101
-                        },
-                        new
-                        {
-                            Id = 751,
-                            AmenitiesId = 52,
-                            RoomId = 201
-                        },
-                        new
-                        {
-                            Id = 752,
-                            AmenitiesId = 53,
-                            RoomId = 301
                         });
                 });
 

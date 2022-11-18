@@ -24,5 +24,11 @@
     Task<Room> SaveChanges();
 
     bool Exists( int id );
+
+    // Add Amenities specific to room
+    Task<Room> AddAmenityToRoom( int roomId, int amenityId );
+
+    // Delete Amenities specific to room
+    Task<Room> RemoveAmenityFromRoom(int roomId, int amenityId );
   }
 }

@@ -143,7 +143,7 @@ namespace AsyncInnTake2_401_Lab.Controllers
             var room = await _room.Find(id);
             if (room != null)
             {
-                _room.Delete(room);
+                await _room.Delete(room);
             }
             
             await _room.SaveChanges();
@@ -154,5 +154,22 @@ namespace AsyncInnTake2_401_Lab.Controllers
         {
           return _room.Exists(id);
         }
-    }
+
+
+        // Post: {roomId}/Amenity/{amenityId}
+        //[HttpPost, ActionName("Post")]
+        //[ValidateAntiForgeryToken]
+        // [Route("{roomId}/Amenity/{amenityId}")]
+
+
+        // Delete: {roomId}/Amenity/{amenityId}
+        [HttpDelete("{roomId}/Amenity/{amenityId}"), ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        //[Route("{roomId}/Amenity/{amenityId}")]
+        public async Task<IActionResult> Amenity(int roomId, int amenityId)
+        {
+          await _room.RemoveAmenityFromRoom(roomId, amenityId);
+          return RedirectToAction(nameof(Index)); 
+        }
+  }
 }

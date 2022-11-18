@@ -13,14 +13,14 @@ namespace AsyncInnTake2_401_Lab.Models.Services
     }
     public async Task<Amenity> Create( Amenity amenity )
     {
-      _asyncinnDbContext.Entry(amenity).State = EntityState.Added;
+       _asyncinnDbContext.Entry(amenity).State = EntityState.Added;
 
       return amenity;
     }
     public async Task<Amenity> UpdateAmenity( Amenity amenity )
     {
       _asyncinnDbContext.Update(amenity);
-      SaveChanges();
+      await SaveChanges();
       return amenity;
     }
     public async Task<Amenity> Find( int? id )
